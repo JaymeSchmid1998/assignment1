@@ -61,6 +61,7 @@ body {
     }
 }
 
+
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -104,4 +105,10 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+    background-color: #FFEBCD;
+}
+.footer1{
+   background-color: #FFEBCD;
+    width: 100%;
+    text-align: center;
 }
