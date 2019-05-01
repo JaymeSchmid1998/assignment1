@@ -28,19 +28,47 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+         document.addEventListener("pause", this.pause, false);
+    document.addEventListener("resume", this.resume, false);
+    },
+    
+   pause:function(){
+          location.replace("#first");
+    console.log("in the pause ");
+    },
+        resume:function(){
+          location.replace("#first");
+    console.log("in the resme  ");
     },
 
+
+  
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        
+        
+        
+        
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+   
 };
 
 app.initialize();
