@@ -45,7 +45,9 @@
         <title>Assignment 1</title>
     </head>
     <body>
-     <div data-role="page">   
+        
+        <!--first page -->
+     <div data-role="page" id="first">   
 
 	
 <div data-role="header" style="overflow:hidden; ">
@@ -56,51 +58,158 @@
         </div>
 </div>
         
+        <form> 
+           <div class="ui-grid-solo">
+    <div class="ui-block-a"><a href="#second"><input type="button" value="Add New Task "></a></div>
+</div> 
+            <br>  
+            <div class="ui-grid-solo">
+                <div class="ui-block-a"><a href="#third"><input type="button" value="view all tasks"></a></div>
+</div>                
+         <br>  <br>     
+</form>    
+       <div data-role="footer" style="overflow:hidden; ">
+    <br>
+                  <h1 >assignment 1 jayme schmid 6290</h1>
+        <br>     
+</div> 
+        </div>
+	<!--second  page -->
         
+        <div data-role="page" id="second">
 
+<div data-role="header" style="overflow:hidden; ">
+<div id="deviceready" class="blink">
+    <br>
+                  <h1>Add a new task </h1>
+        <br>  
+        </div>
+</div>
+
+	<div role="main" class="ui-content">
+	
+	
+<form>
+ 
 	
 
+     <label for="text-6">Task title:</label>
+     <input type="text" name="text-6" id="text-6" value="" placeholder="input the tasks title">
+    
+     <label for="text-6">Task type:</label>
+     <input type="text" name="text-6" id="text-6" value="" placeholder="input the tasks type">
+    
+   <div class="ui-field-contain">
+     <label for="date-2">Date:</label>
+     <input type="date" data-clear-btn="true" name="date-2" id="date-2" value="">
+    </div>
+    
+    <div class="ui-field-contain">
+     <label for="date-2">Time:</label>
+      
+    <input type="time" data-clear-btn="false" name="time-1" id="time-1" value="">
+    </div>
+    
+
+   
+    
+    
+    
+    
+    
+    
+    
+    <a href="#first"><input type="button" data-inline="true" value="Back"></a>
+    <div class="ui-input-btn ui-btn ui-btn-inline">
+       Add new task
+        <input type="submit" data-enhanced="true" value="Add New Task">
+    </div>
+</form>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		 <h1 >assignment 1 jayme schmid 6290</h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
         
         
+        <!--third  page -->
+        
+        <div data-role="page" id="third">
+
+	<div data-role="header" style="overflow:hidden; ">
+<div id="deviceready" class="blink">
+    <br>
+                  <h1 >View all tasks</h1>
+        <br>  
+        </div>
+</div>
+	<div role="main" class="ui-content">
+	
+	
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Friday, October 8, 2010 
+    
+    
+    
+    </li>
+    <li><a href="index.html">
+    <h2>Stephen Weber</h2>
+    <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+    <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
         
         
+        <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+    
         
+        </a></li>
+    
+    <li data-role="list-divider">Thursday, October 7, 2010 
+    
+    
+    </li>
+    <li><a href="index.html">
+    <h2>Avery Walker</h2>
+    <p><strong>Re: Dinner Tonight</strong></p>
+    <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
+        
+        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
+  
+
+    </a></li>
+</ul>
         
         
         
         <form>
-            
-            
-            
-            
-           <div class="ui-grid-solo">
-    <div class="ui-block-a"><input type="button" value="Add New Task "></div>
-</div> 
-            <br>  
-            
-            <div class="ui-grid-solo">
-    <div class="ui-block-a"><input type="button" value="view all tasks"></div>
-</div> 
-                   
-         <br>  <br>     
+        <a href="#first"><input type="button" data-inline="true" value="Back"></a>
+    <div class="ui-input-btn ui-btn ui-btn-inline">
+       Delete task
+        <input type="submit" data-enhanced="true" value="Add New Task">
+    </div>
+</form>
         
-   
-</form> 
         
-       <div data-role="footer" style="overflow:hidden; ">
+	</div><!-- /content -->
 
-    <br>
-                  <h1 >assignment 1 jayme schmid 6290</h1>
-        <br>  
-        
-</div> 
-        
+	<div data-role="footer">
+	 <h1 >assignment 1 jayme schmid 6290</h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
         
         
         
         
-        </div>
-	
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
      
         <script type="text/javascript" src="cordova.js"></script>
