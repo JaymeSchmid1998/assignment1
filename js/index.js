@@ -44,6 +44,10 @@ var app = {
     
     addTest:function(){
         addnew();
+        UpdateDone();
+        //DeleteTask();
+        
+        DisplayList();
     },
     
     
@@ -243,5 +247,163 @@ var app = {
          
     }
 };
+//this should be run when ever the user ticks the done checkbox 
+ function UpdateDone() {
+     console.log("this is working");
+
+     //this gets the elements from the page
+  //var TaskTitle = document.getElementById("TaskTitle").value;
+ //   var TaskType = document.getElementById("TaskType").value;
+// var Date = document.getElementById("Date").value;
+     // var Time = document.getElementById("Time").value;
+     var TaskTitle="a";
+         
+ 
+     
+     try{
+     
+     
+     var done ="yes";
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
+
+   db.transaction(function(tx) {
+        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
+            alert("updated");    
+            console.log("this functioned correctly");
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
+
+ function DeleteTask() {
+     console.log("this is working");
+
+     //this gets the elements from the page
+  //var TaskTitle = document.getElementById("TaskTitle").value;
+ //   var TaskType = document.getElementById("TaskType").value;
+// var Date = document.getElementById("Date").value;
+     // var Time = document.getElementById("Time").value;
+     var TaskTitle="a";
+         
+ 
+     
+     try{
+     
+     
+    
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
+
+   db.transaction(function(tx) {
+        tx.executeSql("delete from task2  where TaskTitle=?", [TaskTitle], function(tx,res){
+            alert("deleted ");    
+            console.log("delete functioned correctly");
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
+
+ function DisplayList() {
+     console.log("this is working");
+
+     //this gets the elements from the page
+  //var TaskTitle = document.getElementById("TaskTitle").value;
+ //   var TaskType = document.getElementById("TaskType").value;
+// var Date = document.getElementById("Date").value;
+     // var Time = document.getElementById("Time").value;
+     var TaskTitle="a";
+         
+ 
+     
+     try{
+     
+     
+    
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
+
+   db.transaction(function(tx) {
+        tx.executeSql("select TaskTitle,date FROM task2", [], function(tx,res){
+            var ROWS=res.rows;
+            var len =ROWS.length;
+            for (var i = 0; i < len; i++) {
+                var cur_item = ROWS[i]; 
+                console.log("the id is : " + cur_item.TaskTitle + " the data is : " + cur_item.date);
+            }
+            
+            
+            
+            
+            
+            
+            alert("working list ");    
+            console.log("listed");
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.initialize();
