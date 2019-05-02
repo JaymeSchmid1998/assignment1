@@ -20,6 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        
     },
 
     // deviceready Event Handler
@@ -30,7 +31,46 @@ var app = {
         this.receivedEvent('deviceready');
          document.addEventListener("pause", this.pause, false);
     document.addEventListener("resume", this.resume, false);
+        document.getElementById("add").addEventListener("vclick", function() {
+            console.log("this is working");
+            
+        });
+        this.createDb();
+        
+        this.addTest();
+        
+        
     },
+    
+    addTest:function(){
+        addnew();
+    },
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
    pause:function(){
           location.replace("#first");
@@ -54,13 +94,62 @@ var app = {
 
         console.log('Received Event: ' + id);
         
+ 
         
         
         
         
         
         
+    },
+    
+    
+    createDb:function(){
+     
+     try{
+     var db= null;
+    var name="T1";
+    var version=1.0;
+    var displayName="t1";
+   
+    db = window.openDatabase( 'mydb','1.0', 'test1', 2024);
+    console.log(db);
+                 alert('Sqlite Database created');
+        console.log('sql created');
+    
+          try{
+    
+          
+ db.transaction(function(tx) {
+       tx.executeSql("CREATE TABLE IF NOT EXISTS task2 (id integer primary key, TaskTitle varchar(255),TaskType varchar(255),date varchar(255),time varchar(255),IfDone varchar(255) )");
         
+        console.log("inline table");
+    }, function(err){
+        alert("An error occurred while initializing the app");
+    });
+            alert('Sqlite TABLE created');
+         console.log('sql TABLE created');
+          
+   
+    
+     }
+          
+          
+          
+          
+      
+         catch(e){
+     alert(e);
+        console.log(e);
+    }
+        
+         
+         
+         
+         
+    }catch(e){
+     alert(e);
+        console.log(e);
     }
     
     
@@ -68,7 +157,91 @@ var app = {
     
     
     
+},
+    
+  
+            
+            
+            
+            
+            
    
+    
+    
+    
+   
+};
+  
+  
+
+      function addnew() {
+     console.log("this is working");
+
+     //this gets the elements from the page
+  //var TaskTitle = document.getElementById("TaskTitle").value;
+ //   var TaskType = document.getElementById("TaskType").value;
+// var Date = document.getElementById("Date").value;
+     // var Time = document.getElementById("Time").value;
+     var TaskTitle="a";
+          var TaskType="a";
+          var Date="1";
+          var Time="1";
+          
+          
+          
+          
+          
+          
+          
+          
+     
+    //this checks for empty or null values  
+    if(TaskTitle == "" || TaskTitle == null)
+    {
+        alert("Please enter a title");
+        return;
+    }
+
+    else if(TaskType == "" || TaskType == null)
+    {
+        alert("Please enter a Task Type");
+        return;
+    }
+      else if(Date == "" || Date == null)
+    {
+        alert("Please enter a Date");
+        return;
+    }
+       else if(Time == ""|| Time == null)
+    {
+        alert("Please enter a Time");
+        return;
+    }
+    else{ 
+     
+     try{
+     
+     
+     var done ="yes";
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
+
+   db.transaction(function(tx) {
+        tx.executeSql("INSERT INTO task2 (TaskTitle, TaskType,date,time,IfDone) VALUES (?,?,?,?,?)", [TaskTitle, TaskType,Date,Time,done], function(tx,res){
+            alert("Note Added");    
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    }
 };
 
 app.initialize();
