@@ -34,8 +34,24 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
         
-        
-        
+
+            <script>
+            $(document).ready(function(){
+               $("#test").click(function(){
+                                 
+window.addnew();
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 }); 
+                
+                
+                
+                
+            
+            });
+            
+        </script>
         
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
@@ -156,11 +172,15 @@
     
     
     
-    
-    <a href="#first"><input type="button" data-inline="true" value="Back"></a>
-    <div class="ui-input-btn ui-btn ui-btn-inline">
-       Add new task
-        <a href="javascript:AddNewTask()"><input type="button"  data-enhanced="true" value="Add New Task" ></a>
+      <div class=" ui-btn-inline">
+        <a  href="#first"><input type="button" data-inline="true" value="Back"></a>
+        
+        <a id="test" ><input type="button" data-inline="true" value="back"></a>
+        
+        
+
+        
+        
     </div>
 </form>
         
@@ -230,18 +250,20 @@
         
         
         <form>
-        <a href="#first"><input type="button" data-inline="true" value="Back"></a>
-    <div class="ui-input-btn ui-btn ui-btn-inline">
-       Delete task
-        <input type="submit" id="add" data-enhanced="true" value="Add New Task">
+       
+    <div class=" ui-btn-inline">
+        <a  href="#first"><input type="button" data-inline="true" value="Back"></a>
+        
+        <a id="test1" ><input type="button" data-inline="true" value="back"></a>
         
         
 
         
         
     </div>
+            
 </form>
-        
+       
         
 	</div><!-- /content -->
 
