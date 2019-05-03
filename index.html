@@ -55,11 +55,11 @@ window.addnew();
           	db.transaction(function(tx) {
                 
                 
-          		tx.executeSql("select TaskTitle,date FROM task2", [], function(tx,res){
+          		tx.executeSql("select TaskTitle,TaskType,date,time FROM task2", [], function(tx,res){
           			document.getElementById("data-list").innerHTML = "";
-                      for(var iii = 0; iii < res.rows.length; iii++)
+                      for(var i = 0; i < res.rows.length; i++)
                       {
-                      	document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(iii).TaskTitle + "\")'>" + res.rows.item(iii).TaskTitle + "</a></li>";
+                      	document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(i).TaskTitle + "\")'>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
                       }
           		});
           	}, function(err){
