@@ -50,7 +50,58 @@ window.addnew();
                 
             
             });
-            
+             $(document).on("pagebeforeshow", "#third", function(){
+                 var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+          	db.transaction(function(tx) {
+                
+                
+          		tx.executeSql("select TaskTitle,date FROM task2", [], function(tx,res){
+          			document.getElementById("data-list").innerHTML = "";
+                      for(var iii = 0; iii < res.rows.length; iii++)
+                      {
+                      	document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(iii).TaskTitle + "\")'>" + res.rows.item(iii).TaskTitle + "</a></li>";
+                      }
+          		});
+          	}, function(err){
+          		alert("An error occured while displaying saved notes");
+          	});
+          });
+
+          function displayNote(TaskTitle)
+          {
+          	db.transaction(function(tx) {
+          		tx.executeSql("SELECT * FROM task2 WHERE TaskTitle = ?", [TaskTitle], function(tx,res){
+                      var TaskTitle = res.rows.item(0).TaskTitle;
+                      var TaskType = res.rows.item(0).TaskType;
+
+                     	document.getElementById("TaskTitle").innerHTML = TaskTitle;
+                     	document.getElementById("TaskType").innerHTML = TaskType;
+
+                     	//$.mobile.changePage("#single-note");
+          		});
+          	}, function(err){
+          		alert(err.message);
+          		alert("An error occured while displaying the note");
+          	});
+          };
+                
+                
+      
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
         </script>
         
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
@@ -247,7 +298,8 @@ window.addnew();
     </a></li>
 </ul>
         
-        
+      <ul id="data-list">
+          	</ul>  
         
         <form>
        
