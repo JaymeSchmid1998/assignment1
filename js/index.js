@@ -182,14 +182,14 @@ var app = {
      console.log("this is working");
 
      //this gets the elements from the page
-  //var TaskTitle = document.getElementById("TaskTitle").value;
- //   var TaskType = document.getElementById("TaskType").value;
-// var Date = document.getElementById("Date").value;
-     // var Time = document.getElementById("Time").value;
-     var TaskTitle="a";
-          var TaskType="a";
-          var Date="1";
-          var Time="1";
+  var TaskTitle = document.getElementById("TaskTitle").value;
+    var TaskType = document.getElementById("TaskType").value;
+ var Date = document.getElementById("Date").value;
+      var Time = document.getElementById("Time").value;
+     //var TaskTitle="a";
+         // var TaskType="a";
+         // var Date="1";
+         // var Time="1";
           
           
           
@@ -232,7 +232,7 @@ var app = {
 
    db.transaction(function(tx) {
         tx.executeSql("INSERT INTO task2 (TaskTitle, TaskType,date,time,IfDone) VALUES (?,?,?,?,?)", [TaskTitle, TaskType,Date,Time,done], function(tx,res){
-            alert("Note Added");    
+            alert("Task added");    
         });
     }, function(err){
         alert(err);
