@@ -226,7 +226,7 @@ var app = {
      try{
      
      
-     var done ="yes";
+     var done ="no";
      var db = openDatabase( 'mydb','1.0', 'test1', 2024);
      
 
@@ -294,7 +294,7 @@ var app = {
  //   var TaskType = document.getElementById("TaskType").value;
 // var Date = document.getElementById("Date").value;
      // var Time = document.getElementById("Time").value;
-     var TaskTitle="a";
+     var IfDone="yes";
          
  
      
@@ -306,7 +306,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("delete from task2  where TaskTitle=?", [TaskTitle], function(tx,res){
+        tx.executeSql("delete from task2  where IfDone=?", [IfDone], function(tx,res){
             alert("deleted ");    
             console.log("delete functioned correctly");
         });

@@ -44,7 +44,13 @@ window.addnew();
                                 //$("#test").hide(); 
                                  
                                  }); 
-                
+                  $("#test1").click(function(){
+                                 
+window.DeleteTask();
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 }); 
                 
                 
                 
@@ -55,35 +61,76 @@ window.addnew();
           	db.transaction(function(tx) {
                 
                 
-          		tx.executeSql("select TaskTitle,TaskType,date,time FROM task2", [], function(tx,res){
+          		tx.executeSql("select TaskTitle,TaskType,date,time,IfDone FROM task2", [], function(tx,res){
           			document.getElementById("data-list").innerHTML = "";
                       for(var i = 0; i < res.rows.length; i++)
                       {
-                      	document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(i).TaskTitle + "\")'>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
+                      	//document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(i).TaskTitle + "\")'>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
+                          
+                          //document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
+                          if(res.rows.item(i).IfDone=="yes"){
+                          // document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+"</p><input type='che' name='vehicle' value= 'Car' checked></div><br></li><br>";
+                              
+                              
+                              document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p></div><br></li><br>";
+                          }
+                           else if(res.rows.item(i).IfDone=="no"){
+                           document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'> <p>"+"done?"+res.rows.item(i).IfDone+"</p>  </div><br></li><br>";
+                          }
+                          
+// <a id='test' ><input type='button' data-inline="true" value='mark as done'></a>
                       }
           		});
           	}, function(err){
-          		alert("An error occured while displaying saved notes");
+          		alert("a problem happened trying to display the notes ");
           	});
           });
+ function UpdateDone(TaskTitle) {
+        
+ 
+     
+     try{
+     
+     
+     var done ="yes";
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
 
-          function displayNote(TaskTitle)
-          {
-          	db.transaction(function(tx) {
-          		tx.executeSql("SELECT * FROM task2 WHERE TaskTitle = ?", [TaskTitle], function(tx,res){
-                      var TaskTitle = res.rows.item(0).TaskTitle;
-                      var TaskType = res.rows.item(0).TaskType;
+   db.transaction(function(tx) {
+        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
+            alert("updated");    
+            console.log("this functioned correctly");
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
+       //  function displayNote(TaskTitle)
+        // {
+          //	db.transaction(function(tx) {
+          	//	tx.executeSql("SELECT * FROM task2 WHERE TaskTitle = ?", [TaskTitle], function(tx,res){
+              //        var TaskTitle = res.rows.item(0).TaskTitle;
+                //      var TaskType = res.rows.item(0).TaskType;
 
-                     	document.getElementById("TaskTitle").innerHTML = TaskTitle;
-                     	document.getElementById("TaskType").innerHTML = TaskType;
+                  //   	document.getElementById("TaskTitle").innerHTML = TaskTitle;
+                    // 	document.getElementById("TaskType").innerHTML = TaskType;
 
                      	//$.mobile.changePage("#single-note");
-          		});
-          	}, function(err){
-          		alert(err.message);
-          		alert("An error occured while displaying the note");
-          	});
-          };
+        //  		});
+          //	}, function(err){
+          	//	alert(err.message);
+          	//	alert("An error occured while displaying the note");
+          	//});
+          //};
                 
                 
       
@@ -298,7 +345,7 @@ window.addnew();
     </a></li>
 </ul>
         
-      <ul id="data-list">
+      <ul id="data-list" data-role="listview" data-inset="true">
           	</ul>  
         
         <form>
@@ -306,7 +353,7 @@ window.addnew();
     <div class=" ui-btn-inline">
         <a  href="#first"><input type="button" data-inline="true" value="Back"></a>
         
-        <a id="test1" ><input type="button" data-inline="true" value="back"></a>
+        <a id="test1" ><input type="button" data-inline="true" value="clear all done tasks"></a>
         
         
 
