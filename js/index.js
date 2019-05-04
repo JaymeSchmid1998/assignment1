@@ -165,8 +165,10 @@ var app = {
     
   
             
-            
-            
+         /* init: function(){
+                    document.getElementById('btn').addEventListener('click', app.takephoto);
+                },*/
+               
             
             
    
@@ -307,6 +309,19 @@ var app = {
     
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
  function DeleteTask() {
      console.log("this is working");
 
@@ -396,6 +411,39 @@ var app = {
 };
 
 
+ function GetGeo12() {
+        
+ 
+     
+     try{
+          
+            var onSuccess = function(position) {
+        //alert('Latitude: '          + position.coords.latitude          + '\n' +'Longitude: '         + position.coords.longitude         + '\n');
+         
+                document.getElementById("loc").innerHTML="<p>Latitude:"          + position.coords.latitude          + " " +"Longitude: "         + position.coords.longitude         + " </p>";
+                
+                
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('message: ' + error.message + '\n');
+    }
+
+   var nav= navigator.geolocation.getCurrentPosition(onSuccess, onError);  
+                console.log(nav);
+     
+  
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
 
 
 
@@ -404,7 +452,29 @@ var app = {
 
 
 
-
+function takephoto (){
+                    let opts = {
+                        quality: 80,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.CAMERA,
+                        mediaType: Camera.MediaType.PICTURE,
+                        encodingType: Camera.EncodingType.JPEG,
+                        cameraDirection: Camera.Direction.BACK,
+                        targetWidth: 300,
+                        targetHeight: 400
+                    };
+                    console.log("t1");
+                    navigator.camera.getPicture(ftw, wtf, opts);
+                };
+               function ftw(imgURI){
+                   console.log("t3"); document.getElementById('msg').textContent = imgURI;
+                    document.getElementById('photo').src = imgURI;
+                    
+                };
+              function  wtf(msg){
+                   console.log("t2"); document.getElementById('msg').textContent = msg;
+                };
+            
 
 
 

@@ -42,20 +42,7 @@
             var option13;
                     
                 
-                
-            var onSuccess = function(position) {
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n');
-    };
-
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('message: ' + error.message + '\n');
-    }
-
-   var nav= navigator.geolocation.getCurrentPosition(onSuccess, onError);  
-                console.log(nav);
+           
                 
                 
                 
@@ -86,6 +73,47 @@ window.addnew();
                                 //$("#test").hide(); 
                                  
                                  }); 
+                $("#btn").click(function(){
+                                 
+window.takephoto();
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 });
+                
+                 $("#GetLoc").click(function(){
+                                 
+window.GetGeo12();
+                  location.replace("#first"); 
+                       location.replace("#second");                
+                               
                   $("#test1").click(function(){
                           location.replace("#first"); 
                     location.replace("#third");             
@@ -189,11 +217,12 @@ window.UpdateNotDone(option13);
        
                 
                 
-      
+            });
                 
                 
                 
-                
+            
+          //  document.addEventListener('deviceready', app.init);    
                 
                 
                 
@@ -247,7 +276,12 @@ window.UpdateNotDone(option13);
           
         <!--first page -->
      <div data-role="page" id="first">   
-
+ 
+         
+         
+         
+         
+         
 	
 <div class="header" data-role="header" style="overflow:hidden; ">
 <div id="deviceready" class="blink">
@@ -256,6 +290,12 @@ window.UpdateNotDone(option13);
         <br>  
         </div>
 </div>
+         
+       
+            
+         
+         
+         
         
         <form>
             <br>
@@ -317,8 +357,21 @@ window.UpdateNotDone(option13);
       
     <input id="Time" type="time" data-clear-btn="false" name="time-1" id="time-1" value="">
     </div>
+     <div class="ui-field-contain">
+     <label for="date-2">Location:</label>
+         <div id="loc"  ></div>
+    <a id="GetLoc" ><input type="button" data-inline="true" value="Get Location"></a>
+    </div>
+<div class="ui-field-contain">
+     <label for="date-2">Picture:</label>
+ <p><img src="img/logo.png" alt="image" id="photo" /></p>
+            <p><button id="btn">Take Picture</button></p>
+<p id="msg"></p>
     
-
+    
+    
+    
+    </div>
    
     
     
