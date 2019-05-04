@@ -77,11 +77,11 @@ var app = {
     
     
    pause:function(){
-          location.replace("#first");
+        //  location.replace("#first");
     console.log("in the pause ");
     },
         resume:function(){
-          location.replace("#first");
+         // location.replace("#first");
     console.log("in the resme  ");
     },
 
