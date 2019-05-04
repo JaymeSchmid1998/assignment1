@@ -31,23 +31,23 @@ var app = {
         this.receivedEvent('deviceready');
          document.addEventListener("pause", this.pause, false);
     document.addEventListener("resume", this.resume, false);
-        document.getElementById("add").addEventListener("vclick", function() {
-            console.log("this is working");
+       // document.getElementById("add").addEventListener("vclick", function() {
+          //  console.log("this is working");
             
-        });
+        //};
         this.createDb();
         
-        this.addTest();
+       // this.addTest();
         
         
     },
     
     addTest:function(){
-        addnew();
-        UpdateDone();
+       // addnew();
+       // UpdateDone();
         //DeleteTask();
         
-        DisplayList();
+       // DisplayList();
     },
     
     
@@ -248,17 +248,9 @@ var app = {
     }
 };
 //this should be run when ever the user ticks the done checkbox 
- function UpdateDone() {
-     console.log("this is working");
-
-     //this gets the elements from the page
-  //var TaskTitle = document.getElementById("TaskTitle").value;
- //   var TaskType = document.getElementById("TaskType").value;
-// var Date = document.getElementById("Date").value;
-     // var Time = document.getElementById("Time").value;
-     var TaskTitle="a";
-         
- 
+ function UpdateDone(TaskTitle) {
+        
+ console.log(TaskTitle);
      
      try{
      

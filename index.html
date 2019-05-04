@@ -37,6 +37,11 @@
 
             <script>
             $(document).ready(function(){
+                
+       var option12;
+                
+                
+                
                $("#test").click(function(){
                                  
 window.addnew();
@@ -53,10 +58,36 @@ window.DeleteTask();
                                  }); 
                 
                 
+                $("select#NDSel").change(function(){
+       var selectedOp = $(this).children("option:selected").val();
+                    console.log(selectedOp);
+                    option12=selectedOp;
+        
+   });
+                
+                
+                
+                
+                
+                
+                   $("#MarkD").click(function(){
+              
+                       var selOp=option12;
+                       alert("You have selected the option - " + option12);
+                       console.log(option12);
+window.UpdateDone(option12);
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 }); 
+                
+                
                 
             
             });
              $(document).on("pagebeforeshow", "#third", function(){
+                                               document.getElementById("NDSel").innerHTML = "";
+
                  var db = openDatabase( 'mydb','1.0', 'test1', 2024);
           	db.transaction(function(tx) {
                 
@@ -76,61 +107,19 @@ window.DeleteTask();
                           }
                            else if(res.rows.item(i).IfDone=="no"){
                            document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'> <p>"+"done?"+res.rows.item(i).IfDone+"</p>  </div><br></li><br>";
+                   
+                              document.getElementById("NDSel").innerHTML = document.getElementById("NDSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
+      
                           }
-                          
-// <a id='test' ><input type='button' data-inline="true" value='mark as done'></a>
+
                       }
           		});
           	}, function(err){
           		alert("a problem happened trying to display the notes ");
           	});
           });
- function UpdateDone(TaskTitle) {
-        
- 
-     
-     try{
-     
-     
-     var done ="yes";
-     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
-     
 
-   db.transaction(function(tx) {
-        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
-            alert("updated");    
-            console.log("this functioned correctly");
-        });
-    }, function(err){
-        alert(err);
-       console.log(err);
-    });
-     }
-    catch(e){
-     alert(e);
-        console.log(e);
-    } 
-         
-         
-    
-};
-       //  function displayNote(TaskTitle)
-        // {
-          //	db.transaction(function(tx) {
-          	//	tx.executeSql("SELECT * FROM task2 WHERE TaskTitle = ?", [TaskTitle], function(tx,res){
-              //        var TaskTitle = res.rows.item(0).TaskTitle;
-                //      var TaskType = res.rows.item(0).TaskType;
-
-                  //   	document.getElementById("TaskTitle").innerHTML = TaskTitle;
-                    // 	document.getElementById("TaskType").innerHTML = TaskType;
-
-                     	//$.mobile.changePage("#single-note");
-        //  		});
-          //	}, function(err){
-          	//	alert(err.message);
-          	//	alert("An error occured while displaying the note");
-          	//});
-          //};
+       
                 
                 
       
@@ -312,6 +301,16 @@ window.DeleteTask();
 </div>
 	<div role="main" class="ui-content">
 	
+        
+        
+        
+        
+        <label for="select-choice-mini" class="select">Not done tasks</label>
+<select  id="NDSel"name="select-choice-mini" id="select-choice-mini" data-mini="true" data-inline="true">
+   
+</select>
+   <a id="MarkD" ><input type="button" data-inline="true" value="clear all done tasks"></a>     
+        
 	
 <ul data-role="listview" data-inset="true">
     <li data-role="list-divider">Friday, October 8, 2010 
