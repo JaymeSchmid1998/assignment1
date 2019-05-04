@@ -277,6 +277,35 @@ var app = {
          
     
 };
+ function UpdateNotDone(TaskTitle) {
+        
+ console.log(TaskTitle);
+     
+     try{
+     
+     
+     var done ="no";
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
+
+   db.transaction(function(tx) {
+        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
+            alert("updated");    
+            console.log("this functioned correctly");
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+         
+         
+    
+};
 
  function DeleteTask() {
      console.log("this is working");

@@ -39,7 +39,8 @@
             $(document).ready(function(){
                 
        var option12;
-                
+            var option13;
+                     
                 
                 
                $("#test").click(function(){
@@ -50,7 +51,8 @@ window.addnew();
                                  
                                  }); 
                   $("#test1").click(function(){
-                                 
+                          location.replace("#first"); 
+                    location.replace("#third");             
 window.DeleteTask();
                                  
                                 //$("#test").hide(); 
@@ -75,6 +77,8 @@ window.DeleteTask();
                        var selOp=option12;
                        alert("You have selected the option - " + option12);
                        console.log(option12);
+                           location.replace("#first"); 
+                       location.replace("#third");
 window.UpdateDone(option12);
                                  
                                 //$("#test").hide(); 
@@ -82,11 +86,38 @@ window.UpdateDone(option12);
                                  }); 
                 
                 
+                 $("select#DSel").change(function(){
+       var selectedOp1 = $(this).children("option:selected").val();
+                    console.log(selectedOp1);
+                    option13=selectedOp1;
+        
+   });
+                
+                
+                
+                
+                
+                
+                   $("#MarkND").click(function(){
+              
+                       var selOp=option13;
+                       alert("You have selected the option - " + option13);
+                       console.log(option13);
+                           location.replace("#first"); 
+                       location.replace("#third");
+window.UpdateNotDone(option13);
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 }); 
+                
                 
             
             });
              $(document).on("pagebeforeshow", "#third", function(){
-                                               document.getElementById("NDSel").innerHTML = "";
+                                               document.getElementById("NDSel").innerHTML = "<option value="+"select one" +"> "+" "+ "select one"+" "+"</option>";  
+      
+                  document.getElementById("DSel").innerHTML = "<option value="+"select one" +"> "+" "+ "select one"+" "+"</option>";
 
                  var db = openDatabase( 'mydb','1.0', 'test1', 2024);
           	db.transaction(function(tx) {
@@ -96,14 +127,14 @@ window.UpdateDone(option12);
           			document.getElementById("data-list").innerHTML = "";
                       for(var i = 0; i < res.rows.length; i++)
                       {
-                      	//document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a href='javascript:displayNote(\"" + res.rows.item(i).TaskTitle + "\")'>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
-                          
-                          //document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + "<li><a>" + res.rows.item(i).TaskTitle +" "+res.rows.item(i).TaskType+" "+res.rows.item(i).date+ " " +res.rows.item(i).time+"</a></li>";
+                      	if(res.rows.item(i).TaskTitle!="Not checked"){
                           if(res.rows.item(i).IfDone=="yes"){
-                          // document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+"</p><input type='che' name='vehicle' value= 'Car' checked></div><br></li><br>";
-                              
+                         
                               
                               document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p></div><br></li><br>";
+                              
+                              document.getElementById("DSel").innerHTML = document.getElementById("DSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
+      
                           }
                            else if(res.rows.item(i).IfDone=="no"){
                            document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'> <p>"+"done?"+res.rows.item(i).IfDone+"</p>  </div><br></li><br>";
@@ -111,7 +142,7 @@ window.UpdateDone(option12);
                               document.getElementById("NDSel").innerHTML = document.getElementById("NDSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
                           }
-
+                        }
                       }
           		});
           	}, function(err){
@@ -309,40 +340,18 @@ window.UpdateDone(option12);
 <select  id="NDSel"name="select-choice-mini" id="select-choice-mini" data-mini="true" data-inline="true">
    
 </select>
-   <a id="MarkD" ><input type="button" data-inline="true" value="clear all done tasks"></a>     
+   <a id="MarkD" ><input type="button" data-inline="true" value="Mark as done"></a>   
+     <label for="select-choice-mini" class="select"> done tasks</label>
+<select  id="DSel"name="select-choice-mini" id="select-choice-mini" data-mini="true" data-inline="true">
+   
+</select>
+   <a id="MarkND" ><input type="button" data-inline="true" value="UNMark as done"></a>    
+        
+        
+        
         
 	
-<ul data-role="listview" data-inset="true">
-    <li data-role="list-divider">Friday, October 8, 2010 
-    
-    
-    
-    </li>
-    <li><a href="index.html">
-    <h2>Stephen Weber</h2>
-    <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
-    <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
-        
-        
-        <p class="ui-li-aside"><strong>6:24</strong>PM</p>
-    
-        
-        </a></li>
-    
-    <li data-role="list-divider">Thursday, October 7, 2010 
-    
-    
-    </li>
-    <li><a href="index.html">
-    <h2>Avery Walker</h2>
-    <p><strong>Re: Dinner Tonight</strong></p>
-    <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
-        
-        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
-  
 
-    </a></li>
-</ul>
         
       <ul id="data-list" data-role="listview" data-inset="true">
           	</ul>  
