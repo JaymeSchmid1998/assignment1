@@ -177,8 +177,8 @@ var app = {
     
    
 };
-  
-  
+  var t1;
+  var imageU;
 
       function addnew() {
      console.log("this is working");
@@ -188,6 +188,19 @@ var app = {
     var TaskType = document.getElementById("TaskType").value;
  var Date = document.getElementById("Date").value;
       var Time = document.getElementById("Time").value;
+          var location;
+          /*try{
+            location = document.getElementById("locAdd").value;
+          }
+          catch(e){
+     alert(e);
+        console.log(e);
+              location="na";
+    } */
+          //alert(t1);
+          location=t1;
+          //alert (location);
+              var Picture = document.getElementById("Time").value;
      //var TaskTitle="a";
          // var TaskType="a";
          // var Date="1";
@@ -195,7 +208,9 @@ var app = {
           
           
           
-          
+          var urlImg;
+          urlImg=imageU;
+          alert(urlImg);
           
           
           
@@ -223,6 +238,10 @@ var app = {
         alert("Please enter a Time");
         return;
     }
+          else if(location==""||location==null|| location==undefined){
+             alert("location is null");
+        return; 
+          }
     else{ 
      
      try{
@@ -419,8 +438,10 @@ var app = {
           
             var onSuccess = function(position) {
         //alert('Latitude: '          + position.coords.latitude          + '\n' +'Longitude: '         + position.coords.longitude         + '\n');
-         
-                document.getElementById("loc").innerHTML="<p>Latitude:"          + position.coords.latitude          + " " +"Longitude: "         + position.coords.longitude         + " </p>";
+          t1=" "+"latitude: "+ position.coords.latitude  + " " +"Longitude: "+ position.coords.longitude+ " ";
+               console.log(t1);
+                
+                document.getElementById("loc").innerHTML="<p> "+"latitude: "+ position.coords.latitude  + " " +"Longitude: "+ position.coords.longitude+ " </p>";
                 
                 
     };
@@ -432,7 +453,7 @@ var app = {
     }
 
    var nav= navigator.geolocation.getCurrentPosition(onSuccess, onError);  
-                console.log(nav);
+                //console.log(nav);
      
   
      }
@@ -469,6 +490,8 @@ function takephoto (){
                function ftw(imgURI){
                    console.log("t3"); document.getElementById('msg').textContent = imgURI;
                     document.getElementById('photo').src = imgURI;
+                   imageU=imgURI;
+                   
                     
                 };
               function  wtf(msg){
