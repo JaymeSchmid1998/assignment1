@@ -43,11 +43,7 @@ var app = {
     },
     
     addTest:function(){
-       // addnew();
-       // UpdateDone();
-        //DeleteTask();
-        
-       // DisplayList();
+       
     },
     
     
@@ -77,11 +73,11 @@ var app = {
     
     
    pause:function(){
-        //  location.replace("#first");
+        // location.replace("#first");
     console.log("in the pause ");
     },
         resume:function(){
-         // location.replace("#first");
+          location.replace("#first");
     console.log("in the resme  ");
     },
 
@@ -252,9 +248,18 @@ var app = {
      
 
    db.transaction(function(tx) {
+      
+        /*tx.executeSql("SELECT TaskTitle,COUNT(*)FROM task3 GROUP BY TaskTitle HAVING COUNT(*) > 1 VALUES (?) ", [TaskTitle], function(tx,res){
+            alert("cannot have a duplicate task");
+            return;    
+        });*/
+       
+       
+       
         tx.executeSql("INSERT INTO task3 (TaskTitle, TaskType,date,time,IfDone,Location,ImgLoc) VALUES (?,?,?,?,?,?,?)", [TaskTitle, TaskType,Date,Time,done,location,urlImg], function(tx,res){
             alert("Task added");    
         });
+       
     }, function(err){
         alert(err);
        console.log(err);
@@ -344,11 +349,7 @@ var app = {
  function DeleteTask() {
      console.log("this is working");
 
-     //this gets the elements from the page
-  //var TaskTitle = document.getElementById("TaskTitle").value;
- //   var TaskType = document.getElementById("TaskType").value;
-// var Date = document.getElementById("Date").value;
-     // var Time = document.getElementById("Time").value;
+    
      var IfDone="yes";
          
  
@@ -382,11 +383,7 @@ var app = {
  function DisplayList() {
      console.log("this is working");
 
-     //this gets the elements from the page
-  //var TaskTitle = document.getElementById("TaskTitle").value;
- //   var TaskType = document.getElementById("TaskType").value;
-// var Date = document.getElementById("Date").value;
-     // var Time = document.getElementById("Time").value;
+    
      var TaskTitle="a";
          
  
@@ -500,7 +497,37 @@ function takephoto (){
             
 
 
+function DeleteAll(){
+                      try{
+     
+     
+    
+     var db = openDatabase( 'mydb','1.0', 'test1', 2024);
+     
 
+   db.transaction(function(tx) {
+        tx.executeSql("delete FROM task3", [], function(tx,res){
+          alert("all tasks deleted");
+         
+            
+            
+            
+            
+            
+            
+           
+        });
+    }, function(err){
+        alert(err);
+       console.log(err);
+    });
+     }
+    catch(e){
+     alert(e);
+        console.log(e);
+    } 
+                };
+              
 
 
 

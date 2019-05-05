@@ -40,30 +40,7 @@
                 
        var option12;
             var option13;
-                    
-                
-           
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+         
                 
                 
                $("#test").click(function(){
@@ -73,35 +50,28 @@ window.addnew();
                                 //$("#test").hide(); 
                                  
                                  }); 
+                
+                
+                
+                
+                $("#Delete").click(function(){
+                                 
+window.DeleteAll();
+               location.replace("#first"); 
+                    location.replace("#third");       
+                    
+       
+                    
+                                 
+                                //$("#test").hide(); 
+                                 
+                                 });
 $("#btn").click(function(){
                                  
 window.takephoto();
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+       
                     
                                  
                                 //$("#test").hide(); 
@@ -195,32 +165,16 @@ window.UpdateNotDone(option13);
                       	if(res.rows.item(i).TaskTitle!="Not checked"){
                           if(res.rows.item(i).IfDone=="yes"){
                          
-                              
-                              //document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><p>"+" location:"+" "+res.rows.item(i).Location+" "+ "</p> <p>Image: </p>"+ "<img src="res.rows.item(i).ImgLoc"/>"+ " "+ "</p></div><br></li><br>";
-                           document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><p>"+" location:"+" "+ res.rows.item(i).Location+" "+ " <br><br><p>Image: </p>"+ "'\<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br></li><br>";
-                   
-                              
-                              
-                             //   <label for="date-2">Location:</label>
-        // <div id="loc"  ><p id="locAdd"></p></div>
-                              
-                            //  <img src="img/logo.png" alt="image" id="photo" />
-                              
-                              
-                              
+                            
+                        document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p><strong>"+" Task type: </strong> "+res.rows.item(i).TaskType+" "+"</p><p>"+" <strong>date: </strong> "+res.rows.item(i).date+" "+"<strong> Time: </strong>"+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"<strong> is the task done? </strong> "+res.rows.item(i).IfDone+"</p><br><p>"+"<strong> Location: </strong>"+" "+ res.rows.item(i).Location+" "+ " <br><br><p><strong> Image: </strong></p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
+                 
                               document.getElementById("DSel").innerHTML = document.getElementById("DSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
                           }
                            else if(res.rows.item(i).IfDone=="no"){
-                             document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><br><p>"+" location:"+" "+ res.rows.item(i).Location+" "+ " <br><br><p>Image: </p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
+                             document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p><strong>"+" Task type: </strong> "+res.rows.item(i).TaskType+" "+"</p><p>"+" <strong>date: </strong> "+res.rows.item(i).date+" "+"<strong> Time: </strong>"+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"<strong> is the task done? </strong> "+res.rows.item(i).IfDone+"</p><br><p>"+"<strong> Location: </strong>"+" "+ res.rows.item(i).Location+" "+ " <br><br><p><strong> Image: </strong></p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
                    
-                               
-                              //   document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><br><p>"+" location:"+" "+res.rows.item(i).Location+" "+"</p></div><br></li><br>";
-                              
-                               
-                               
-                               
-                               
+                      
                                
                               document.getElementById("NDSel").innerHTML = document.getElementById("NDSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
@@ -239,43 +193,7 @@ window.UpdateNotDone(option13);
             });
                 
                 
-                
-            
-          //  document.addEventListener('deviceready', app.init);    
-                
-              
-             /*           let app1 = {
-                init: function(){
-                    document.getElementById('btn').addEventListener('click', app.takephoto);
-                },
-                takephoto: function(){
-                    let opts = {
-                        quality: 80,
-                        destinationType: Camera.DestinationType.FILE_URI,
-                        sourceType: Camera.PictureSourceType.CAMERA,
-                        mediaType: Camera.MediaType.PICTURE,
-                        encodingType: Camera.EncodingType.JPEG,
-                        cameraDirection: Camera.Direction.BACK,
-                        targetWidth: 300,
-                        targetHeight: 400
-                    };
-                    
-                    navigator.camera.getPicture(app.ftw, app.wtf, opts);
-                },
-                ftw: function(imgURI){
-                    document.getElementById('msg').textContent = imgURI;
-                    document.getElementById('photo').src = imgURI;
-                    
-                },
-                wtf: function(msg){
-                    document.getElementById('msg').textContent = msg;
-                }
-            }; 
-                
-                
-                
-                document.addEventListener('deviceready', app1.init);    */
-                
+        
                 
                 
                 
@@ -290,32 +208,7 @@ window.UpdateNotDone(option13);
         <title>Assignment 1</title>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+ 
         
     </head>
     <body>
@@ -504,6 +397,16 @@ window.UpdateNotDone(option13);
         <a  href="#first"><input type="button" data-inline="true" value="Back"></a>
         
         <a id="test1" ><input type="button" data-inline="true" value="clear all done tasks"></a>
+        
+        
+
+        
+        
+    </div>
+            
+             <div class=" ui-btn-inline">
+        <a ID="Delete"><input type="button" data-inline="true" value="delete all tasks"></a>
+        
         
         
 
