@@ -125,7 +125,7 @@ var app = {
     
           
  db.transaction(function(tx) {
-       tx.executeSql("CREATE TABLE IF NOT EXISTS task2 (id integer primary key, TaskTitle varchar(255),TaskType varchar(255),date varchar(255),time varchar(255),IfDone varchar(255) )");
+       tx.executeSql("CREATE TABLE IF NOT EXISTS task3 (id integer primary key, TaskTitle varchar(255),TaskType varchar(255),date varchar(255),time varchar(255),IfDone varchar(255),Location varchar(255),ImgLoc varchar(355) )");
         
         console.log("inline table");
     }, function(err){
@@ -252,7 +252,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("INSERT INTO task2 (TaskTitle, TaskType,date,time,IfDone) VALUES (?,?,?,?,?)", [TaskTitle, TaskType,Date,Time,done], function(tx,res){
+        tx.executeSql("INSERT INTO task3 (TaskTitle, TaskType,date,time,IfDone,Location,ImgLoc) VALUES (?,?,?,?,?,?,?)", [TaskTitle, TaskType,Date,Time,done,location,urlImg], function(tx,res){
             alert("Task added");    
         });
     }, function(err){
@@ -281,7 +281,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
+        tx.executeSql("update task3 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
             alert("updated");    
             console.log("this functioned correctly");
         });
@@ -310,7 +310,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("update task2 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
+        tx.executeSql("update task3 set IfDone=? where TaskTitle=?", [done,TaskTitle], function(tx,res){
             alert("updated");    
             console.log("this functioned correctly");
         });
@@ -361,7 +361,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("delete from task2  where IfDone=?", [IfDone], function(tx,res){
+        tx.executeSql("delete from task3  where IfDone=?", [IfDone], function(tx,res){
             alert("deleted ");    
             console.log("delete functioned correctly");
         });
@@ -399,7 +399,7 @@ var app = {
      
 
    db.transaction(function(tx) {
-        tx.executeSql("select TaskTitle,date FROM task2", [], function(tx,res){
+        tx.executeSql("select TaskTitle,date FROM task3", [], function(tx,res){
             var ROWS=res.rows;
             var len =ROWS.length;
             for (var i = 0; i < len; i++) {

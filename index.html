@@ -187,22 +187,41 @@ window.UpdateNotDone(option13);
           	db.transaction(function(tx) {
                 
                 
-          		tx.executeSql("select TaskTitle,TaskType,date,time,IfDone FROM task2", [], function(tx,res){
+          		tx.executeSql("select TaskTitle,TaskType,date,time,IfDone,Location,ImgLoc FROM task3", [], function(tx,res){
           			document.getElementById("data-list").innerHTML = "";
                       for(var i = 0; i < res.rows.length; i++)
                       {
+                          console.log(res.rows.item(i).ImgLoc);
                       	if(res.rows.item(i).TaskTitle!="Not checked"){
                           if(res.rows.item(i).IfDone=="yes"){
                          
                               
-                              document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p></div><br></li><br>";
+                              //document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><p>"+" location:"+" "+res.rows.item(i).Location+" "+ "</p> <p>Image: </p>"+ "<img src="res.rows.item(i).ImgLoc"/>"+ " "+ "</p></div><br></li><br>";
+                           document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><p>"+" location:"+" "+ res.rows.item(i).Location+" "+ " <br><br><p>Image: </p>"+ "'\<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br></li><br>";
+                   
+                              
+                              
+                             //   <label for="date-2">Location:</label>
+        // <div id="loc"  ><p id="locAdd"></p></div>
+                              
+                            //  <img src="img/logo.png" alt="image" id="photo" />
+                              
+                              
                               
                               document.getElementById("DSel").innerHTML = document.getElementById("DSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
                           }
                            else if(res.rows.item(i).IfDone=="no"){
-                           document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'> <p>"+"done?"+res.rows.item(i).IfDone+"</p>  </div><br></li><br>";
+                             document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><br><p>"+" location:"+" "+ res.rows.item(i).Location+" "+ " <br><br><p>Image: </p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
                    
+                               
+                              //   document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p>"+" Task type: "+res.rows.item(i).TaskType+" "+"</p><p>"+" date: "+res.rows.item(i).date+" "+" Time: "+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"done?"+res.rows.item(i).IfDone+"</p><br><p>"+" location:"+" "+res.rows.item(i).Location+" "+"</p></div><br></li><br>";
+                              
+                               
+                               
+                               
+                               
+                               
                               document.getElementById("NDSel").innerHTML = document.getElementById("NDSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
                           }
