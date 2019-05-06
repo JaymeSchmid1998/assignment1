@@ -42,8 +42,9 @@
             var option13;
          
                 
-                
-               $("#test").click(function(){
+                //these are all .click functions that wait till their speficied button is presed so that they can run their desired function
+               //.click for add
+                $("#AddBtn").click(function(){
                                  
 window.addnew();
                                  
@@ -53,7 +54,7 @@ window.addnew();
                 
                 
                 
-                
+                //.click for delete 
                 $("#Delete").click(function(){
                                  
 window.DeleteAll();
@@ -66,6 +67,7 @@ window.DeleteAll();
                                 //$("#test").hide(); 
                                  
                                  });
+                //.click for takephoto
 $("#btn").click(function(){
                                  
 window.takephoto();
@@ -77,13 +79,13 @@ window.takephoto();
                                 //$("#test").hide(); 
                                  
                                  });
-                
+                //.click for getting geo location
                  $("#GetLoc").click(function(){
                                  
 window.GetGeo12();
                   location.replace("#first"); 
                        location.replace("#second");                
-                               
+                         //this is the .click for a delete function      
                   $("#test1").click(function(){
                           location.replace("#first"); 
                     location.replace("#third");             
@@ -93,7 +95,7 @@ window.DeleteTask();
                                  
                                  }); 
                 
-                
+                //this is a function that checks for a change in the  not done selector box
                 $("select#NDSel").change(function(){
        var selectedOp = $(this).children("option:selected").val();
                     console.log(selectedOp);
@@ -105,11 +107,11 @@ window.DeleteTask();
                 
                 
                 
-                
+                //this is the mark done .click
                    $("#MarkD").click(function(){
               
                        var selOp=option12;
-                       alert("You have selected the option - " + option12);
+                       //alert("You have selected the option - " + option12);
                        console.log(option12);
                            location.replace("#first"); 
                        location.replace("#third");
@@ -119,7 +121,7 @@ window.UpdateDone(option12);
                                  
                                  }); 
                 
-                
+                //this is a function that checks for a change in the   done selector box
                  $("select#DSel").change(function(){
        var selectedOp1 = $(this).children("option:selected").val();
                     console.log(selectedOp1);
@@ -131,11 +133,11 @@ window.UpdateDone(option12);
                 
                 
                 
-                
+                //this is the mark not done .click
                    $("#MarkND").click(function(){
               
                        var selOp=option13;
-                       alert("You have selected the option - " + option13);
+                       //alert("You have selected the option - " + option13);
                        console.log(option13);
                            location.replace("#first"); 
                        location.replace("#third");
@@ -148,6 +150,7 @@ window.UpdateNotDone(option13);
                 
             
             });
+                //this loads all of the table values onto the third pagewhen it is loaded 
              $(document).on("pagebeforeshow", "#third", function(){
                                                document.getElementById("NDSel").innerHTML = "<option value="+"select one" +"> "+" "+ "select one"+" "+"</option>";  
       
@@ -156,25 +159,28 @@ window.UpdateNotDone(option13);
                  var db = openDatabase( 'mydb','1.0', 'test1', 2024);
           	db.transaction(function(tx) {
                 
-                
+                //this retrives the values from the table and then adds them to the innerhtml of the unsorted list 
           		tx.executeSql("select TaskTitle,TaskType,date,time,IfDone,Location,ImgLoc FROM task3", [], function(tx,res){
           			document.getElementById("data-list").innerHTML = "";
                       for(var i = 0; i < res.rows.length; i++)
                       {
                           console.log(res.rows.item(i).ImgLoc);
                       	if(res.rows.item(i).TaskTitle!="Not checked"){
+                            //this checks if the task is done or not 
                           if(res.rows.item(i).IfDone=="yes"){
-                         
+                         //adds the task item to the task list
                             
                         document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p><strong>"+" Task type: </strong> "+res.rows.item(i).TaskType+" "+"</p><p>"+" <strong>date: </strong> "+res.rows.item(i).date+" "+"<strong> Time: </strong>"+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"<strong> is the task done? </strong> "+res.rows.item(i).IfDone+"</p><br><p>"+"<strong> Location: </strong>"+" "+ res.rows.item(i).Location+" "+ " <br><br><p><strong> Image: </strong></p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
-                 
+                 //adds values to the dsel selctor box 
                               document.getElementById("DSel").innerHTML = document.getElementById("DSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
                           }
                            else if(res.rows.item(i).IfDone=="no"){
+                                //adds the task item to the task list
+                            
                              document.getElementById("data-list").innerHTML = document.getElementById("data-list").innerHTML + " <li> <h2>"+" Title: "+ res.rows.item(i).TaskTitle+"</h2>" +"<p><strong>"+" Task type: </strong> "+res.rows.item(i).TaskType+" "+"</p><p>"+" <strong>date: </strong> "+res.rows.item(i).date+" "+"<strong> Time: </strong>"+res.rows.item(i).time+"</p> <div  class='ui-li-aside'><p>"+"<strong> is the task done? </strong> "+res.rows.item(i).IfDone+"</p><br><p>"+"<strong> Location: </strong>"+" "+ res.rows.item(i).Location+" "+ " <br><br><p><strong> Image: </strong></p>"+ "<img src="+res.rows.item(i).ImgLoc+" >"+ " "+ "</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></li><br>";
                    
-                      
+                            //adds values to the ndsel selctor box 
                                
                               document.getElementById("NDSel").innerHTML = document.getElementById("NDSel").innerHTML + " <option value="+res.rows.item(i).TaskTitle +"> "+" "+ res.rows.item(i).TaskTitle+" "+"</option>";  
       
@@ -322,7 +328,7 @@ window.UpdateNotDone(option13);
           <div class=" ui-btn-inline">
         <a  href="#first"><input type="button" data-inline="true" value="Back"></a>
         
-        <a id="test" ><input type="button" data-inline="true" value="Add task"></a>
+        <a id="AddBtn" ><input type="button" data-inline="true" value="Add task"></a>
         
         
 
